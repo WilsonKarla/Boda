@@ -1,0 +1,909 @@
+  /* Tipografía */
+  @font-face {
+    font-family: 'GreatVibes';
+    src: url('../fonts/GreatVibes-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  /* --- Fuentes ArnoPro completas --- */
+  @font-face {
+    font-family: 'ArnoPro';
+    src: url('../fonts/ArnoPro-Display.otf') format('opentype');
+    font-weight: 200; /* más delgada, ideal para títulos elegantes */
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'ArnoPro';
+    src: url('../fonts/arnopro_bold.otf') format('opentype');
+    font-weight: 700;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'ArnoPro';
+    src: url('../fonts/arnopro_bolditalic.otf') format('opentype');
+    font-weight: 700;
+    font-style: italic;
+  }
+
+  @font-face {
+    font-family: 'ArnoPro';
+    src: url('../fonts/arnopro_boldcaption.otf') format('opentype');
+    font-weight: 600;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'ArnoPro';
+    src: url('../fonts/arnopro_bolddisplay.otf') format('opentype');
+    font-weight: 800;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'ArnoPro';
+    src: url('../fonts/arnopro_caption.otf') format('opentype');
+    font-weight: 300;
+    font-style: normal;
+  }
+
+  /* Fondo general */
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: #edece7;
+    color: #333;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("../img/Fondo-4.jpg");
+    background-repeat: repeat-y;
+    background-size: 100% auto;
+    background-position: center top;
+    z-index: -1;
+    mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
+  }
+
+  /* Header */
+  .header-fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    z-index: 1000;
+    padding: 0.5rem 0;
+  }
+
+  .logo-header {
+    height: clamp(30px, 6vw, 60px);
+    object-fit: contain;
+  }
+
+  /* Sección principal */
+  .hero-section {
+    margin-top: 80px; /* espacio mínimo para el header */
+    text-align: center;
+  }
+
+  /* Contenedor natural (sin altura forzada) */
+  .hero-stack {
+    position: relative;
+    display: inline-block; /* se ajusta al tamaño de la imagen */
+  }
+
+  /* Imágenes superpuestas */
+  .stack-img {
+    display: block;
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  /* La primera imagen define el tamaño */
+  .hero-stack img:first-child {
+    position: relative;
+  }
+
+  /* Z-index */
+  .left  { z-index: 30; }
+  .center{ z-index: 20; }
+  .right { z-index: 10; }
+
+  /* Fecha */
+  .fecha {
+    text-align: center;
+    font-family: 'GreatVibes', cursive;
+    font-size: 3rem;
+  }
+
+  /* 🌸 Imagen de flores debajo de la fecha */
+  .flores {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .flores-img {
+    width: min(280px, 60vw); /* se adapta a celulares */
+    height: auto;
+    display: block;
+  }
+
+  /* Texto */
+  .texto-1 {
+    text-align: center;
+    font-family: 'GreatVibes', cursive;
+    font-size: 2rem;
+    margin-right: 10%;
+    margin-left: 10%;
+    margin-top: 10%;
+  }
+
+  /* CONTADOR */
+  .contador {
+    background-color: #2f5e4e; /* verde elegante */
+    color: white;
+    text-align: center;
+    padding: 1.5rem 0;
+    margin-top: 2rem;
+    overflow: hidden; /* evita scrolls */
+  }
+
+  .contador-titulo {
+    font-family: 'GreatVibes', cursive;
+    font-size: 2rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .contador-box {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    flex-wrap: nowrap; /* evita filas nuevas */
+    gap: clamp(0.5rem, 2vw, 1rem); /* espaciado flexible */
+    margin: 0 auto;
+    padding: 0 8%; /* margen interno a los bordes */
+    box-sizing: border-box;
+    max-width: 100%; /* nunca más ancho que la pantalla */
+  }
+
+  .contador-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 0 1 auto; /* evita que crezcan más de lo necesario */
+    min-width: 60px;
+  }
+
+  .contador-item div {
+    font-family: 'ArnoPro', serif;
+    font-weight: 800; /* usa la versión bolddisplay */
+    font-size: clamp(3.5rem, 8vw, 5.5rem); /* adaptable, más grande */
+    line-height: 1;
+    letter-spacing: -1px; /* números más juntos */
+  }
+
+  .contador-item span {
+    font-family: 'ArnoPro', serif;
+    font-weight: 200; /* versión más delgada */
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    margin-top: 0.3rem;
+  }
+
+  .separador {
+    font-family: 'ArnoPro', serif;
+    font-weight: 800;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    line-height: 1;
+    margin: 0 0.3rem;
+    flex: 0 0 auto; /* los separadores no crecen */
+    letter-spacing: -1px; /* números más juntos */
+  }
+
+  /* Texto-2 */
+  .texto-2 {
+    text-align: center;
+    font-family: 'GreatVibes', cursive;
+    font-size: 2.1rem;
+    text-align: center;
+    margin-right: 7%;
+    margin-left: 7%;
+    margin-top: 10%;
+  }
+  /* Texto-3 */
+  .texto-3 {
+    font-family: 'ArnoPro', serif;
+    font-weight: 800;
+    font-size: 1.5rem;
+    text-align: center;
+    margin-right: 10%;
+    margin-left: 10%;
+    margin-top: 5%;
+  }
+  /* Texto-4 */
+  .texto-4 {
+    font-family: 'ArnoPro', serif;
+    font-weight: 200;
+    font-size: 1.5rem;
+    text-align: center;
+    margin-right: 10%;
+    margin-left: 10%;
+  }
+
+  /* --- Sección Nombres --- */
+  .nombres {
+    position: relative;
+    width: 100%;
+    height: auto;
+    text-align: center;
+    margin-top: 3rem;
+    overflow: hidden;
+  }
+
+  .nombres-stack {
+    position: relative;
+    display: inline-block;
+    width: min(500px, 90%);
+    height: auto;
+  }
+
+  /* Asegura que la primera imagen defina la altura */
+  .nombres-stack img:first-child {
+    position: relative;
+    opacity: 1; /* visible */
+  }
+
+  .nombres-stack img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    user-select: none;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+
+  /* plantas */
+  .planta {
+    width: 130%;
+    top: 0;
+    opacity: 1;
+  }
+  .planta.izquierda {
+    left: -15%;
+  }
+  .planta.derecha {
+    right: -15%;
+    left: auto;
+  }
+
+  /* textos */
+  .nombre {
+    width: 100%;
+    opacity: 1;
+  }
+  .nombre.carla {
+    z-index: 30;
+  }
+  .nombre.ampersand {
+    z-index: 40;
+  }
+  .nombre.wilson {
+    z-index: 50;
+  }
+
+  /* animaciones AOS personalizadas */
+  [data-aos="fade-right"] {
+    transform: translateX(-100px);
+    opacity: 0;
+    transition: all 0.5s ease-out;
+  }
+  [data-aos="fade-left"] {
+    transform: translateX(100px);
+    opacity: 0;
+    transition: all 0.5s ease-out;
+  }
+  [data-aos="fade-up"] {
+    transform: translateY(40px);
+    opacity: 0;
+    transition: all 0.5s ease-out;
+  }
+  [data-aos].aos-animate {
+    transform: translate(0,0);
+    opacity: 1;
+  }
+
+  /* --- Sección Evento --- */
+  .evento {
+    text-align: center;
+    color: #2f5e4e;
+    margin-top: 3rem;
+    padding: 0 8%; /* margen lateral */
+    overflow: hidden;
+  }
+
+  /* Texto superior (día y hora) */
+  .evento-dia {
+    font-family: 'ArnoPro', serif;
+    font-weight: 800;
+    font-size: clamp(1.5rem, 2vw, 1.3rem);
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+  }
+
+  /* Fecha en imágenes superpuestas */
+  .evento-fecha {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 1rem;
+  }
+
+  .fecha-stack {
+    position: relative;
+    display: inline-block;
+    width: 70%;
+    height: auto;
+  }
+
+  .fecha-stack img:first-child {
+    position: relative;
+    opacity: 1;
+  }
+
+  .fecha-capa {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    pointer-events: none;
+    user-select: none;
+    transition: opacity 0.5s ease;
+  }
+
+  /* Lugares */
+  .evento-lugares {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 1.5rem;
+  }
+
+  .lugar {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    text-align: left;
+    max-width: 600px;
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+
+  .icono {
+    width: 32px;
+    height: auto;
+    flex-shrink: 0;
+  }
+
+  .texto-lugar .titulo {
+    font-family: 'ArnoPro', serif;
+    font-weight: 800;
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    margin: 0;
+  }
+
+  .texto-lugar .direccion {
+    font-family: 'ArnoPro', serif;
+    font-weight: 200;
+    font-size: clamp(0.9rem, 1.8vw, 1rem);
+    margin: 0.2rem 0 0 0;
+    color: #333;
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    .evento {
+      padding: 0 6%;
+    }
+
+    .lugar {
+      gap: 0.8rem;
+    }
+
+    .icono {
+      width: 26px;
+    }
+  }
+
+  /* =========== GALERÍA 6 FOTOS (GRID) =========== */
+  /* ===== CONTENEDOR PRINCIPAL ===== */
+  .galeria-boda {
+    position: relative;
+    width: 100%;
+    padding: 5rem 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  /* ===== GRID EXACTO QUE QUIERES ===== */
+  .galeria-grid {
+    width: min(920px, 92%);
+    display: grid;
+    gap: 0.8rem;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "f1 f2"
+      "f3 f3"
+      "f4 f5"
+      "f6 f6";
+  }
+
+  /* → Cada área asignada */
+  .foto1 {
+    grid-area: f1;
+  }
+
+  .foto2 {
+    grid-area: f2;
+  }
+
+  .foto3 {
+    grid-area: f3;
+  }
+
+  .foto4 {
+    grid-area: f4;
+  }
+
+  .foto5 {
+    grid-area: f5;
+  }
+
+  .foto6 {
+    grid-area: f6;
+  }
+
+  /* ===== IMÁGENES SIN DEFORMAR ===== */
+  .galeria-grid .foto {
+    width: 100%;
+    height: auto;
+    /* conserva proporciones originales */
+    object-fit: contain;
+    /* no recorta nada */
+    border-radius: 14px;
+    display: block;
+    box-shadow: 0 8px 26px rgba(0, 0, 0, 0.15);
+  }
+
+    /* ===== ROSAS (encima, centradas) - estado inicial y animado ===== */
+    .rosas {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%) translateY(-18px);
+      /* ligero offset inicial */
+      width: clamp(180px, 22vw, 240px);
+      pointer-events: none;
+      z-index: 50;
+      opacity: 0;
+      will-change: transform, opacity;
+      transition: transform 600ms cubic-bezier(.2, .9, .2, 1), opacity 600ms ease;
+    }
+  
+    /* ubicaciones */
+    .rosas.arriba {
+      top: 30px;
+    }
+  
+    /* usa px para estabilidad */
+    .rosas.abajo {
+      bottom: 30px;
+    }
+  
+    /* clase que activa la animación (añadida por JS) */
+    .rosas.in {
+      transform: translateX(-50%) translateY(0) scale(1);
+      opacity: 1;
+    }
+  
+    /* opción: pequeño "pop" al entrar */
+    .rosas.in.pop {
+      transition: transform 420ms cubic-bezier(.2, .9, .2, 1), opacity 420ms ease;
+      transform: translateX(-50%) translateY(0) scale(1.03);
+    }
+
+
+  
+
+  /* ===== IMPORTANTE =====
+  ✦ NO hay media queries que rompan tu diseño en celular.
+  ✦ El grid se mantiene igual en móvil.
+============================================================ */      
+
+  /* ======== CRONOGRAMA ======== */
+  .cronograma {
+    position: relative;
+    width: 100%;
+    padding: 5rem 0 6rem 0;
+    text-align: center;
+  }
+
+  .titulo-cronograma {
+    font-family: 'ArnoPro', serif;
+    font-weight: 800;
+    font-size: 2rem;
+    letter-spacing: 2px;
+    color: #1d5a4a;
+    margin-bottom: 2rem;
+    margin-top: 5rem;
+  }
+
+  /* Rosas decorativas */
+  .rosa-corner {
+    position: absolute;
+    width: 50%;
+    max-width: 270px;
+    z-index: 10;
+    pointer-events: none;
+  }
+
+  .rosa-top {
+    top: 0;
+    left: 0;
+  }
+
+  .rosa-bottom {
+    bottom: 0;
+    right: 0;
+  }
+
+  /* Timeline */
+  .timeline {
+    width: min(700px, 90%);
+    margin: 0 auto;
+    position: relative;
+    padding: 0 1rem;
+  }
+
+  /* Línea completamente responsiva */
+  .linea-vertical {
+    position: absolute;
+    width: 4px;
+    background: #1d5a4a;
+    border-radius: 3px;
+    z-index: 1;
+  }
+
+  /* ITEM */
+  .item {
+    display: grid;
+    grid-template-columns: 20% 10% 1fr;
+    align-items: center;
+    gap: 1rem;
+    position: relative;
+    z-index: 5;
+    margin-bottom: 1rem;
+  }
+
+  /* Ícono */
+  .icono-cronograma {
+    width: 50%;
+    height: auto;
+    justify-self: right;
+  }
+
+  /* Punto centrado EXACTAMENTE sobre la línea */
+  .punto {
+    width: clamp(12px, 3vw, 16px);
+    height: clamp(12px, 3vw, 16px);
+    background: #1d5a4a;
+    border-radius: 50%;
+    margin: auto;
+    position: relative;
+    z-index: 10;
+  }
+
+  .texto {
+    text-align: left;
+  }
+
+  .texto h3 {
+    font-family: 'ArnoPro', serif;
+    font-weight: 800;
+    font-size: 1.8rem;
+    margin: 0;
+  }
+
+  .texto p {
+    font-family: 'ArnoPro', serif;
+    font-size: 1rem;
+    margin-top: -2%;
+  }
+
+  /* Móvil */
+  @media(max-width: 600px) {
+    .item {
+      grid-template-columns: 25% 12% 1fr;
+    }
+
+    /* Reposicionar la línea para pantallas pequeñas */
+    .linea-vertical {
+      left: calc(25% + 34px);
+    }
+  }
+
+
+  /* ======== GRUPOS ======== */
+  .contenedor-amenizado {
+    width: 100%;
+    text-align: center;
+    margin-top: 40px;
+    position: relative;
+  }
+
+  .intro-amenizado {
+    font-family: "ArnoPro", serif;
+    font-size: 1.2rem;
+    color: #2f5e4e;
+    line-height: 1.3;
+  }
+
+  .titulo-amenizado {
+    font-family: 'GreatVibes', cursive;
+    font-size: 40px;
+    margin-top: 10px;
+    color: #375f44;
+  }
+
+  .grupo-item {
+    width: 100%;
+    position: relative;
+    margin: 40px 0;
+    align-items: center;
+  }
+
+  .img-grupo {
+    width: 70%;
+    margin-left: 10%;
+    margin-right: 10%;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  }
+
+  .btn-saludo {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 20px;
+    font-family: "ArnoPro", serif;
+    font-size: 16px;
+    border-radius: 20px;
+    background: #4f7e62;
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+  }
+
+  .btn-saludo:hover {
+    background: #3b5d49;
+  }
+
+  /* Rosas flotantes */
+  .rosa-flotante {
+    position: absolute;
+    width: 120px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    z-index: 50;
+    opacity: 0.9;
+  }
+
+  .izquierda {
+    left: 0;
+  }
+
+  .derecha {
+    right: 0;
+  }
+
+  @media(max-width: 600px) {
+    .rosa-flotante {
+      width: 18%;
+    }
+  }
+  
+/* ========== LINKS ELEGANTES ========== */
+
+.links {
+  position: relative;
+  width: 100%;
+  background: #2f5e4e;
+  padding: 3rem 0;
+  overflow: hidden;
+}
+
+/* TÍTULO PRINCIPAL */
+.links-titulo {
+  font-family: 'GreatVibes', cursive;
+  font-weight: normal;
+  font-style: normal;
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 3rem;
+  position: relative;
+  z-index: 5;
+}
+
+/* CONTENEDOR CENTRAL */
+.links-contenedor {
+  width: min(80%, 900px);
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 5;
+}
+
+.link-box {
+  margin-bottom: 3rem; /* separación entre grupos */
+  padding-top: 0.2rem; /* pequeño ajuste para no interferir con AOS */
+}
+
+/* ========== ELIMINAR ESPACIOS SIN ROMPER AOS ========== */
+.link-box > *:not(button) {
+  margin: 0;  /* eliminamos espacios, pero NO del botón */
+  padding: 0;
+}
+
+/* ICONOS */
+.icono-link {
+  width: 55px;
+  height: auto;
+  margin-bottom: 0.2rem;
+}
+
+/* TEXTOS */
+.titulo-verde {
+  font-family: 'ArnoPro';
+  font-weight: 800;
+  color: #c0e8da;
+  font-size: 1.25rem;
+  margin: 0;
+}
+
+.titulo-blanco {
+  font-family: 'ArnoPro';
+  font-weight: 800;
+  color: #ffffff;
+  font-size: 1.35rem;
+  margin: 0;
+}
+
+.titulo-blanco.grande {
+  font-size: 1.6rem;
+  margin: 0;
+}
+
+.direccion {
+  color: white;
+  font-family: 'ArnoPro';
+  margin: 0.2rem 0 0.4rem 0;
+}
+
+/* BOTONES (dejamos su margin para que AOS funcione bien) */
+.btn-link {
+  background: white;
+  color: #2f5e4e;
+  padding: 8px 20px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  font-family: 'ArnoPro';
+  font-weight: 800;
+  font-size: 0.85rem;
+  transition: 0.3s;
+  margin-top: 0.5rem;
+}
+
+.btn-link:hover {
+  background: #c0e8da;
+}
+
+/* ========== ROSAS LATERALES ========== */
+.borde-izq,
+.borde-der {
+  position: absolute;
+  height: 60%;        
+  width: auto;        
+  object-fit: contain;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Rosa izquierda */
+.borde-izq {
+  left: 0;
+  top: 10%;          /* 10% desde arriba */
+}
+
+/* Rosa derecha */
+.borde-der {
+  right: 0;
+  bottom: 10%;       /* 10% desde abajo */
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 600px) {
+
+  .icono-link {
+    width: 45px;
+  }
+
+  .titulo-verde { font-size: 1.15rem; }
+  .titulo-blanco { font-size: 1.25rem; }
+  .titulo-blanco.grande { font-size: 1.45rem; }
+
+  .borde-izq,
+  .borde-der {
+    height: 45%; /* rosas más pequeñas */
+  }
+}
+
+/* ========= SECCIÓN FINAL ========== */
+.final-invitacion {
+  position: relative;
+  width: 100%;
+  height: auto;        /* ← la sección se ajusta al alto real de la imagen */
+  padding-top: 10%;
+  overflow: hidden;
+  text-align: center;
+}
+
+/* Flores alineadas abajo y centradas */
+.final-flores {
+  width: 100%;         /* ajusta al ancho */
+  height: auto;
+  display: block;
+  margin: 0;           /* sin espacio arriba ni abajo */
+  padding: 0;
+  object-fit: cover;   /* asegura que no se distorsione */
+}
+
+/* ========= RESPONSIVE ========= */
+@media (max-width: 600px) {
+  .final-flores {
+    width: 100%;       /* ya no la hacemos más grande */
+  }
+}
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    .logo-header { height: 50px; }
+    .fecha { font-size: 2.2rem; }
+    .flores-img { width: 70vw; }
+    .contador-item div {
+      font-size: 3rem;
+    }
+    .contador-titulo {
+      font-size: 1.6rem;
+    }
+  }
