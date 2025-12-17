@@ -30,16 +30,40 @@
     27 . 12 . 2025
   </div>
 
-  
-  <button id="btnFoto">📸 Sube tu foto</button>
-  <input 
-    type="file"
-    id="inputFoto"
-    accept="image/*"
-    capture="environment"
-    style="display:none"
-  />
-  <p id="estado"></p>
+  <!-- FOTOS-->
+  <section class="seccion-fotos">
+  <div class="contenedor-botones">
+
+    <!-- BOTÓN TOMAR FOTO -->
+    <button id="btnFoto" class="btn-foto btn-tomar">
+      <img src="img/icono-btn-tomar.png" alt="Tomar foto">
+      <span>Tomar foto</span>
+    </button>
+
+    <!-- INPUT OCULTO (NO TOCAR) -->
+    <input 
+      type="file"
+      id="inputFoto"
+      accept="image/*"
+      capture="environment"
+      hidden
+    />
+
+    <!-- BOTÓN SUBIR DESDE GALERÍA -->
+    <a 
+      href="https://drive.google.com/drive/folders/TU_FOLDER_ID"
+      target="_blank"
+      class="btn-foto btn-subir"
+    >
+      <img src="img/icono-btn-subir.png" alt="Subir fotos">
+      <span>Subir fotos</span>
+    </a>
+
+  </div>
+
+  <p id="estado" class="estado-subida"></p>
+</section>
+
 
 
    <!-- Imagen de flores centrada debajo de la fecha -->
@@ -670,6 +694,7 @@
 
 </body>
 </html>
+
 
 
 
