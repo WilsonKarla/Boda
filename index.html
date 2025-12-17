@@ -30,6 +30,18 @@
     27 . 12 . 2025
   </div>
 
+  
+  <button id="btnFoto">📸 Sube tu foto</button>
+  <input 
+    type="file"
+    id="inputFoto"
+    accept="image/*"
+    capture="environment"
+    style="display:none"
+  />
+  <p id="estado"></p>
+
+
    <!-- Imagen de flores centrada debajo de la fecha -->
   <div class="flores animate__animated animate__fadeInUp animate__delay-5s">
     <img src="img/Rosas-1.png" alt="Decoración floral" class="flores-img">
@@ -609,11 +621,56 @@
   });
 </script>
 
+<script>
+  const btnFoto = document.getElementById("btnFoto");
+  const inputFoto = document.getElementById("inputFoto");
+  const estado = document.getElementById("estado");
+  
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwfo8E5DSVKB4Ru0yiwn2iPerYPeBvJ7zox353nJQlupn9h0SIL0fR5cUDQMiGke-k-WA/exec";
+  
+  btnFoto.addEventListener("click", () => {
+    inputFoto.click();
+  });
+  
+  inputFoto.addEventListener("change", () => {
+    const file = inputFoto.files[0];
+    if (!file) return;
+  
+    estado.textContent = "Subiendo foto...";
+  
+    const reader = new FileReader();
+    reader.onload = () => {
+      const base64Image = reader.result.split(",")[1];
+  
+      fetch(SCRIPT_URL, {
+        method: "POST",
+        body: JSON.stringify({
+          image: base64Image,
+          name: "invitado"
+        })
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          estado.textContent = "✅ ¡Foto enviada con éxito!";
+        } else {
+          estado.textContent = "❌ Error al subir la foto";
+        }
+      })
+      .catch(() => {
+        estado.textContent = "❌ Error de conexión";
+      });
+    };
+  
+    reader.readAsDataURL(file);
+  });
+</script>
 
 
 
 </body>
 </html>
+
 
 
 
