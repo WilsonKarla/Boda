@@ -13,6 +13,10 @@
   <link rel="icon" type="image/png" href="img/favicon.png">
 </head>
 <body>
+  <div id="splash-inicial">
+  <img src="img/invitacion.jpg" alt="Invitación Carla & Wilson">
+</div>
+  
   <header class="header-fixed" data-aos="fade-down">
     <img src="img/LogoKW.png" alt="Iniciales Carla & Wilson" class="logo-header">
   </header>
@@ -691,10 +695,41 @@
   });
 </script>
 
+<script>
+  const splash = document.getElementById("splash-inicial");
+  const hero = document.querySelector(".hero-section");
+  
+  let splashActivo = true;
+  
+  // Bloquear scroll inicial
+  document.body.style.overflow = "hidden";
+  
+  function cerrarSplash() {
+    if (!splashActivo) return;
+    splashActivo = false;
+  
+    splash.classList.add("oculto");
+    document.body.style.overflow = "";
+  
+    hero.scrollIntoView({ behavior: "smooth" });
+  
+    setTimeout(() => {
+      splash.remove();
+    }, 700);
+  }
+  
+  // Click o tap
+  splash.addEventListener("click", cerrarSplash);
+  
+  // Scroll (rueda, touch, trackpad)
+  window.addEventListener("wheel", cerrarSplash, { passive: true });
+  window.addEventListener("touchmove", cerrarSplash, { passive: true });
 
+</script>
 
 </body>
 </html>
+
 
 
 
