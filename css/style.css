@@ -1025,3 +1025,38 @@
 
 
 
+/* SPLASH INICIAL */
+#splash-inicial {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+
+  background-color: #edece7;
+  z-index: 5000; /* MÁS QUE EL HEADER */
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+}
+
+/* IMAGEN 9:16 */
+#splash-inicial img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* OCULTAR SPLASH */
+#splash-inicial.oculto {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.6s ease;
+}
+
+
+
+
