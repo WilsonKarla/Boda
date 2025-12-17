@@ -851,6 +851,26 @@
   bottom: 10%;       /* 10% desde abajo */
 }
 
+/* ========== QR UBICACIÓN (CENTRADO Y ELEGANTE) ========== */
+.qr-link {
+  display: flex;              /* fuerza centrado real */
+  justify-content: center;
+  margin: 0.8rem 0 0.5rem 0;  /* espacio visual correcto */
+}
+
+.qr-ubicacion {
+  width: 130px;               /* tamaño ideal en desktop */
+  height: auto;
+  border-radius: 14px;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.22);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.qr-link:hover .qr-ubicacion {
+  transform: scale(1.06);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.32);
+}
+
 /* ========== RESPONSIVE ========== */
 @media (max-width: 600px) {
 
@@ -865,6 +885,9 @@
   .borde-izq,
   .borde-der {
     height: 45%; /* rosas más pequeñas */
+  }
+  .qr-ubicacion {
+    width: 105px;
   }
 }
 
@@ -907,3 +930,4 @@
       font-size: 1.6rem;
     }
   }
+
