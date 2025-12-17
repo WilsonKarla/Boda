@@ -1059,4 +1059,50 @@
 
 
 
+/* SECCIÓN SUGERENCIA */
+.seccion-sugerencia {
+  margin: 70px 0;
+  padding: 0 12%;
+  text-align: center;
+}
+
+/* CONTENEDOR QR */
+.qr-contenedor {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+/* IMAGEN QR */
+.qr-img {
+  width: min(180px, 45vw);
+  height: auto;
+}
+
+/* TEXTO SUGERENCIA */
+.texto-sugerencia {
+  font-family: 'ArnoPro';
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 1.45; /* interlineado corto y elegante */
+  letter-spacing: 0.08em;
+  color: #333;
+  text-transform: uppercase;
+}
+
+/* RESPONSIVE */
+@media (max-width: 480px) {
+  .seccion-sugerencia {
+    padding: 0 8%;
+  }
+
+  .texto-sugerencia {
+    font-size: 13px;
+    line-height: 1.4;
+  }
+}
+
+
+
+
 
